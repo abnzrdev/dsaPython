@@ -1,36 +1,32 @@
-# for dfs implementation we need source
-# then we just have to include our implementaion of adjList after adding them impl
-# We can traverse through the source if it exist
+def addedge(adj, a, b):
+    adj[a].append(b)
+    adj[b].append(a)
 
-def addedge(adj, u, v):
-    adj[u].append(v)
-    adj[v].append(u)
 
-def dfs(adj, source, visited, traversal):
+def dfs(adj, source, visited=None):
+    if visited == None:
+        visited = [False] * len(adj)
+
     visited[source] = True
-    traversal.append(source)
+    print(source, end=" ")
 
     for neigh in adj[source]:
         if not visited[neigh]:
-            dfs(adj, neigh, visited, traversal)
+            dfs(adj, neigh, visited)
 
 
 if __name__ == "__main__":
-    vertices = int(input("Vertices: "))
-    edges = int(input("Edges: "))
-    adj = [[] for _ in range(edges)]
+    vertices = int(input("Vertices(Write the largest number in your vertices + 1)  : "))
+    edge = int(input("Edges : "))
+    adj = [[] for i in range(vertices)]
 
-    for _ in range(edges):
+    for i in range(edge):
         u, v = map(int, input().split())
         addedge(adj, u, v)
 
-    source = int(input("Source: "))
-    visited = [False] * edges
-    traversal = []
+    print(adj)
 
-    dfs(adj, source, visited, traversal)
-    print(traversal)
-
-
+    source = int(input("source : "))
+    dfs(adj, source)
 
 
