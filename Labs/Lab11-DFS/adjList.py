@@ -3,15 +3,18 @@
 # 1. From taking inputs we have to create adjacency list which basically means
 # we are changing the graph in to something that we can use of
 
-def addedge(adj, u, v):
-    adj[u].append(v)
-    adj[v].append(u)
+def addedge(adj, a, b):
+    adj[a].append(b)
+    adj[b].append(a)
 
 if __name__ == "__main__":
-    edge = int(input())
-    adj = [[] for i in range(edge)]
-    for _ in range(edge):
+    vertices = int(input("Vertices(Write the largest number in your vertices + 1)  : "))
+    edge = int(input("Edges : "))
+    adj = [[] for i in range(vertices)]
+
+    for i in range(edge):
         u, v = map(int, input().split())
         addedge(adj, u, v)
 
     print(adj)
+
