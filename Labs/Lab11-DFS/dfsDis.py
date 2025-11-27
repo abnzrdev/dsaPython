@@ -7,16 +7,17 @@ def addedge(adj, u, v):
 
 def dfsrec(adj, source, visited):
     visited[source] = True
-    print(source, end=" ")
-
+    print(source, end = " ")
     for neigh in adj[source]:
         if not visited[neigh]:
             dfsrec(adj, neigh, visited)
 
-def dfs(adj):
+def dfs(adj, source):
     visited = [False] * len(adj)
+    dfsrec(adj, source, visited)
+
     for u in range(len(adj)):
-        if not visited[u]:
+        if not visited[u] and len(adj[u]) > 0:
             dfsrec(adj, u, visited)
 
 if __name__ == "__main__":
@@ -29,4 +30,5 @@ if __name__ == "__main__":
         u, v = map(int, input().split())
         addedge(adj, u, v)
 
-    dfs(adj)
+    source = int(input("source : "))
+    dfs(adj,source)
