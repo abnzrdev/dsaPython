@@ -208,6 +208,27 @@ class MathOperations:
 
         return result
 
+    def binexpo(self, base, pow):
+        """
+        Calculate power using recursive binary exponentiation.
+        Time Complexity: O(log(pow))
+        Space Complexity: O(log(pow)) due to recursion stack
+
+        Args:
+            base: Base number
+            pow: Non-negative exponent
+
+        Returns:
+            int: base^pow
+        """
+        if pow == 0:
+            return 1
+        if pow % 2 == 0:
+            half = self.binexpo(base, pow // 2)
+            return half * half
+        else:
+            return base * self.binexpo(base, pow - 1)
+
 
 
 
