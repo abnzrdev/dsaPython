@@ -83,6 +83,9 @@ class Math:
         
         return  [k for k in range(num + 1) if is_prime[k]]
 
+    # Problem F
+    
+
 
 if __name__ == "__main__":
     math = Math()
