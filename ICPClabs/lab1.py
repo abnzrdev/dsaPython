@@ -63,7 +63,7 @@ class Math:
             k += 1
         return None
 
-    # Problem D
+    # Problem D : Stepan and pairs
     def pairs(self, num):
         result = 0
         for i in range(1, num + 1):
@@ -71,7 +71,7 @@ class Math:
         
         return result
 
-    # Problem E
+    # Problem E : Sieve of Eratosthenes
     def sieve(self, num):
         is_prime = [True for i in range(num + 1)]
         is_prime[0] = is_prime[1] = False
@@ -83,8 +83,26 @@ class Math:
         
         return  [k for k in range(num + 1) if is_prime[k]]
 
-    # Problem F
-    
+    # Problem G : Almost Prime
+    def is_prime(self, num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
+
+    def almost_prime(self, low, high):
+        seen = set()
+        for p in range(2, int(high ** 0.5) + 1):
+            if self.is_prime(p):
+                power = p * p
+                while power <= high:
+                    if power >= low:
+                        seen.add(power)
+                    power *= p
+        return len(seen)
+
 
 
 if __name__ == "__main__":
