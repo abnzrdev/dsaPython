@@ -103,15 +103,32 @@ class Math:
                     power *= p
         return len(seen)
 
+   # Problem H : Fast Exponentiation
+    def fst_expo(self, num):
+        binary = str(bin(num))
+        result = ""
+        for i in range(2, len(binary)):
+            if binary[i] == "1":
+                result += "SX"
+            else:
+                result += "S"
+        return result
+    def gcd(self, num1, num2):
+        num1, num2 = abs(num1), abs(num2)
+        while num2:
+            num1, num2 = num2, num1 % num2
+        return num1
 
+    def relative_prime(self, num):
+        count = 0
+        for i in range(1, num + 1):
+            if self.gcd(num, i) == 1:
+                count += 1
+        return count
 
 if __name__ == "__main__":
     math = Math()
-    num1, num2 = map(int, input().split())
-    siever = math.sieve(num2)
-    prime_count = 0
-    for i in range(num1, num2 + 1):
-        if i in siever:
-            prime_count += 1
-    print(prime_count)
+    num1 = int(input(""))
+    answer = math.relative_prime(num1)
+    print(answer)
         
