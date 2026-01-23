@@ -1,10 +1,12 @@
-num = int(input(""))
-max = 1
-result = {}
-for i in range(num):
-    tmp = int(input(""))
-    if tmp > max:
-        max = tmp
-    result[tmp] += 1
-
-print(max, result[max], end=" ")
+from collections import Counter
+def towers(bar_len):
+    freq = Counter(bar_len)
+    tallest = max(freq.values())  
+    amt = len(freq)              
+    return tallest, amt
+    
+if __name__ == "__main__":
+    num = int(input(""))
+    nums = list(map(int, input("").split()))
+    result = towers(nums)
+    print(result[0], result[1], end=" ")

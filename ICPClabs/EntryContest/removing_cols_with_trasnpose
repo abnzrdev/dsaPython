@@ -1,0 +1,18 @@
+def rem_cols_with_transpose(strings):
+    removed = 0
+    transposed = ["".join(col) for col in zip(*strings)]
+    for columns in transposed:
+        min = columns[0]
+        for i in range(1, len(columns)):
+            if min > columns[i]:
+                removed += 1
+                break
+    return removed 
+
+if __name__ == "__main__":
+    test_case, string_length = map(int, input().split())
+    strings = []
+    for i in range(test_case):
+        string_input = input()
+        strings.append(string_input)
+    print(rem_cols_with_transpose(strings))
